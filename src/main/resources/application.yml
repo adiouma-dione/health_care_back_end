@@ -1,0 +1,42 @@
+#
+#spring.datasource.url=jdbc:h2:mem:kc_db
+#spring.datasource.driverClassName=org.h2.Driver
+#spring.h2.console.enabled=true
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/tp_spring_horizon?createDatabaseIfNotExist=true
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+#spring:
+#  servlet:
+#    multipart:
+#      location: classpath:/static/img
+
+
+
+#
+#spring.security.oauth2.client.registration.keycloak.client-id=client-test
+#spring.security.oauth2.client.registration.keycloak.authorization-grant-type=authorization_code
+#spring.security.oauth2.client.registration.keycloak.scope=openid
+#
+#spring.security.oauth2.client.provider.keycloak.issuer-uri=http://localhost:8080/realms/SpringBootKeycloak
+#spring.security.oauth2.client.provider.keycloak.user-name-attribute=admin
+
+#server.port=9090
+#
+#keycloak.realm=realm-test
+#keycloak.resource=client-test
+#keycloak.auth-server-url=http://localhost:8080
+#keycloak.bearer-only=true
+#keycloak.ssl-required=none
+##  secret: mNNqsKejsDiVDPYfnV57LSNWqCturQNo
+##  public-client: false
