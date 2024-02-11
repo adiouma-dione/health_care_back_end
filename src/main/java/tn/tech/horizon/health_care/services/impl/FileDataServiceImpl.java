@@ -32,7 +32,7 @@ public class FileDataServiceImpl implements FileDataService {
         }
     }
 
-    public String uploadFileToFileSystem(Long idOwner, MultipartFile file) throws IOException {
+    public String uploadFileToFileSystem(Long idFilesOwner, MultipartFile file) throws IOException {
         Path uploadPath = Paths.get(uploadDirectory, "img");
         Files.createDirectories(uploadPath);
         String fileName = file.getOriginalFilename();
@@ -40,7 +40,7 @@ public class FileDataServiceImpl implements FileDataService {
         Files.copy(file.getInputStream(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
         fileDataRepository.save(
             FileData.builder()
-                .idOwner(idOwner)
+                .idFilesOwner(idFilesOwner)
                 .name(fileName)
                 .type(file.getContentType())
                 .filePath("/img/" + fileName)
@@ -50,8 +50,8 @@ public class FileDataServiceImpl implements FileDataService {
         return "File uploaded successfully: " + fileName;
     }
 
-    public byte[] downloadFileFromFileSystem(Long idOwner) throws IOException {
-        Optional<FileData> optionalFileData = fileDataRepository.findByIdOwner(idOwner);
+    public byte[] downloadFileFromFileSystem(Long idFilesOwner) throws IOException {
+        Optional<FileData> optionalFileData = fileDataRepository.findByIdFilesOwner(idFilesOwner);
 
         if (optionalFileData.isPresent()) {
             FileData fileData = optionalFileData.get();
@@ -59,7 +59,7 @@ public class FileDataServiceImpl implements FileDataService {
             Path fullPath = Paths.get(uploadDirectory, filePath);
             return Files.readAllBytes(fullPath);
         } else {
-            throw new FileNotFoundException("File not found: " + idOwner);
+            throw new FileNotFoundException("File not found: " + idFilesOwner);
         }
     }
 

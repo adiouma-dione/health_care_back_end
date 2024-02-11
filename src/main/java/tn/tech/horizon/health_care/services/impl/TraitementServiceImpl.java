@@ -17,7 +17,7 @@ public class TraitementServiceImpl implements TraitementService {
     private DossierMedicalServiceImpl dossierMedicalService;
     @Override
     public Page<Traitement> getAllTraitements(Long idDossier, Pageable page) {
-        return traitementRepository.findTraitementByDossierMedical(idDossier, page);
+        return traitementRepository.findTraitementByDossierMedical_IdDossierMedicalOrderByIdTraitementDesc(idDossier, page);
     }
 
     @Override

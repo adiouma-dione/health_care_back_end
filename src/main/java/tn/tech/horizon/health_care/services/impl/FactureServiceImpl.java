@@ -19,8 +19,13 @@ public class FactureServiceImpl implements FactureService {
 
     @Override
     public Page<Facture> getAllFactures(Long idDossier, Pageable page) {
-        return factureRepository.findConsultationByDateAndIdDossier(idDossier, page);
+        return factureRepository.findFacturesByDossierMedical_IdDossierMedical(idDossier, page);
     }
+
+//    @Override
+//    public Facture getFacturePatient(Long idPatient, Pageable page) {
+//        return factureRepository.findById(idFacture).orElse(null);
+//    }
 
     @Override
     public Facture addFacture(Facture facture, Long idDossier) {

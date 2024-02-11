@@ -1,5 +1,6 @@
 package tn.tech.horizon.health_care.controllers;
 
+import jakarta.annotation.security.RolesAllowed;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +18,7 @@ public class ConsultationRestController {
     private ConsultationServiceImpl consultationService;
 
     @GetMapping("/consultation/list")
+//    @RolesAllowed("medecin")
     public ResponseEntity<Page<Consultation>> getAllConsultations(
             Long idDossier, int page, int size) {
         return ResponseEntity.ok(consultationService.getAllConsultations(idDossier, PageRequest.of(page, size)));

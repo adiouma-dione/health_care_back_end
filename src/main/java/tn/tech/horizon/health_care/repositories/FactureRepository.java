@@ -9,6 +9,8 @@ import tn.tech.horizon.health_care.entites.Facture;
 
 @Repository
 public interface FactureRepository extends JpaRepository<Facture, Long> {
-    @Query("SELECT f FROM Facture f WHERE f.dossierMedical.idDossierMedical = ?1 order by f.dateFacture desc")
-    Page<Facture> findConsultationByDateAndIdDossier(Long idDossier, Pageable pageable);
+//    @Query("SELECT f FROM Facture f WHERE f.dossierMedical.idDossierMedical = ?1 order by f.dateFacture desc")
+
+    Page<Facture> findFacturesByDossierMedical_IdDossierMedical(Long idDossier, Pageable pageable);
+
 }

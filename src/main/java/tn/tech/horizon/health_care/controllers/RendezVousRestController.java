@@ -17,8 +17,18 @@ public class RendezVousRestController {
     private RendezVousServiceImpl rendezVousService;
 
     @GetMapping("/rendezVous/list")
-    public ResponseEntity<Page<RendezVous>> getAllRendezVouss(String date, int page, int size) {
-        return ResponseEntity.ok(rendezVousService.getAllRendezVouss(date, PageRequest.of(page, size)));
+    public ResponseEntity<Page<RendezVous>> getAllRendezVous(String date, int page, int size) {
+        return ResponseEntity.ok(rendezVousService.getAllRendezVous(date, PageRequest.of(page, size)));
+    }
+
+    @GetMapping("/rendezVous/medecin")
+    public ResponseEntity<Page<RendezVous>> getAllRendezVousByMedecin(Long idMedecin, int page, int size) {
+        return ResponseEntity.ok(rendezVousService.getAllRendezVousByMedecin(idMedecin, PageRequest.of(page, size)));
+    }
+
+    @GetMapping("/rendezVous/patient")
+    public ResponseEntity<Page<RendezVous>> getRendezVousByPatient(Long idPatient, int page, int size) {
+        return ResponseEntity.ok(rendezVousService.getRendezVousByPatient(idPatient, PageRequest.of(page, size)));
     }
 
     @GetMapping("/rendezVous/{idRendezVous}")
@@ -26,12 +36,16 @@ public class RendezVousRestController {
         return ResponseEntity.ok(rendezVousService.getRendezVous(idRendezVous));
     }
 
-    @PostMapping("/rendezVous/add")
-    public ResponseEntity<RendezVous> saveRendezVous(@RequestBody RendezVous rendezVous) {
-        return ResponseEntity.ok(rendezVousService.addRendezVous(rendezVous));
+    @PostMapping("/rendezVous/add/{idPatient}/{idMedecin}")
+    public ResponseEntity<RendezVous> saveRendezVous(
+            @RequestBody RendezVous rendezVous,
+            @PathVariable Long idPatient,
+            @PathVariable Long idMedecin) {
+        RendezVous savedRendezVous = rendezVousService.addRendezVous(rendezVous, idPatient, idMedecin);
+        return ResponseEntity.ok(savedRendezVous);
     }
 
-    @PostMapping("/rendezVous/update")
+    @PutMapping("/rendezVous/update")
     public ResponseEntity<RendezVous> updateRendezVous(@RequestBody RendezVous rendezVous) {
         return ResponseEntity.ok(rendezVousService.updateRendezVous(rendezVous));
     }

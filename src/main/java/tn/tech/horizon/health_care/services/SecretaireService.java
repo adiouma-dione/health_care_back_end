@@ -11,5 +11,8 @@ public interface SecretaireService {
     Secretaire addSecretaire(Secretaire secretaire);
     Secretaire updateSecretaire(Secretaire secretaire);
     Secretaire getSecretaire(Long id);
+
+    Secretaire getSecretaireByEmail(String email);
+
     void deleteSecretaire(Long id);
 }

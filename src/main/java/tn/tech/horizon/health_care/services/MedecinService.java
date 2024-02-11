@@ -14,6 +14,7 @@ public interface MedecinService {
     Medecin updateMedecin(Medecin medecin);
 
     Medecin getMedecin(Long idMedecin);
+    Medecin getMedecinByEmail(String email);
 
     void deleteMedecin(Long idMedecin);
 }

@@ -22,6 +22,7 @@ public class Medecin {
     private String email;
     private String telephone;
     private String specialite;
+    private String description;
 
 
     @OneToOne()

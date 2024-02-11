@@ -26,12 +26,17 @@ public class MedecinRestController {
         return ResponseEntity.ok(medecinService.getMedecin(idMedecin));
     }
 
+    @GetMapping("/medecin-email/{email}")
+    public ResponseEntity<Medecin> getMedecinByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(medecinService.getMedecinByEmail(email));
+    }
+
     @PostMapping("/medecin/add")
     public ResponseEntity<Medecin> saveMedecin(@RequestBody Medecin medecin) {
         return ResponseEntity.ok(medecinService.addMedecin(medecin));
     }
 
-    @PostMapping("/medecin/update")
+    @PutMapping("/medecin/update")
     public ResponseEntity<Medecin> updateMedecin(@RequestBody Medecin medecin) {
         return ResponseEntity.ok(medecinService.updateMedecin(medecin));
     }

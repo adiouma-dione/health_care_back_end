@@ -26,12 +26,17 @@ public class SecretaireRestController {
         return ResponseEntity.ok(secretaireService.getSecretaire(idSecretaire));
     }
 
+    @GetMapping("/secretaire-email/{email}")
+    public ResponseEntity<Secretaire> getSecretaireByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(secretaireService.getSecretaireByEmail(email));
+    }
+
     @PostMapping("/secretaire/add")
     public ResponseEntity<Secretaire> saveSecretaire(@RequestBody Secretaire secretaire) {
         return ResponseEntity.ok(secretaireService.addSecretaire(secretaire));
     }
 
-    @PostMapping("/secretaire/update")
+    @PutMapping("/secretaire/update")
     public ResponseEntity<Secretaire> updateSecretaire(@RequestBody Secretaire secretaire) {
         return ResponseEntity.ok(secretaireService.updateSecretaire(secretaire));
     }

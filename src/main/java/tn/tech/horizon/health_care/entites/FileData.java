@@ -19,7 +19,7 @@ public class FileData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long idOwner;
+    private Long idFilesOwner;
 
     @Column(length = 255)
     private String name;

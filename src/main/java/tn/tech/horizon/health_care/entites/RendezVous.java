@@ -16,7 +16,7 @@ public class RendezVous {
     private Long idRendezVous;
     private String dateRendezVous;
     private String heureRendezVous;
-    private String motif;
+    private String objet;
     private Boolean isConfirmed;
 
     @ManyToOne

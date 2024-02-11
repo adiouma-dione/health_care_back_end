@@ -26,6 +26,11 @@ public class PatientRestController {
         return ResponseEntity.ok(patientService.getPatient(idPatient));
     }
 
+    @GetMapping("/patient")
+    public ResponseEntity<Patient> getPatientByEmail(String email) {
+        return ResponseEntity.ok(patientService.getPatientByEmail(email));
+    }
+
     @PostMapping("/patient/add")
     public ResponseEntity<Patient> addPatient(@RequestBody Patient patient) {
         return ResponseEntity.ok(patientService.addPatient(patient));

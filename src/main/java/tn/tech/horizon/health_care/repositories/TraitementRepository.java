@@ -9,6 +9,6 @@ import tn.tech.horizon.health_care.entites.Traitement;
 
 @Repository
 public interface TraitementRepository extends JpaRepository<Traitement, Long> {
-    @Query("SELECT t FROM Traitement t WHERE t.dossierMedical.idDossierMedical = ?1")
-    Page<Traitement> findTraitementByDossierMedical(Long idDossier, Pageable pageable);
+//    @Query("SELECT t FROM Traitement t WHERE t.dossierMedical.idDossierMedical = ?1")
+    Page<Traitement> findTraitementByDossierMedical_IdDossierMedicalOrderByIdTraitementDesc(Long idDossier, Pageable pageable);
 }
